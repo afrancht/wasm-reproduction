@@ -4,16 +4,7 @@ const withImages = require('next-images');
 const webpackConfig = withImages(
   withCSS({
     target: 'server',
-    module: {
-      noParse: /\.wasm$/,
-      rules: [
-        {
-          test: /\.wasm$/,
-          loaders: ['base64-loader'],
-          type: 'javascript/auto',
-        },
-      ],
-    },
+    module: { rules: [] },
     webpack(config) {
       config.module.rules.push({
         test: /\.(png|svg|eot|otf|ttf|woff|woff2)$/,
@@ -27,6 +18,13 @@ const webpackConfig = withImages(
           },
         },
       });
+      config.module.noParse = /\.wasm$/;
+      config.node = {
+        __dirname: false,
+        fs: 'empty',
+        Buffer: false,
+        process: false,
+      };
 
       return config;
     },
