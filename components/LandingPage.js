@@ -6,7 +6,7 @@ import { Flex, Box } from 'rebass';
 import { APPLICATION_NAME } from '../constants/Strings';
 
 // If you comment out the line below everything works, if not then you get the error.
-// const argon2 = require('argon2-browser');
+const argon2 = require('argon2-browser');
 
 class LandingPage extends React.PureComponent {
   render() {
