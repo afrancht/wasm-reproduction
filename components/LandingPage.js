@@ -9,6 +9,14 @@ const argon2 = require('argon2-browser');
 
 class LandingPage extends React.PureComponent {
   render() {
+    {
+      argon2
+        .hash({
+          pass: 'p@ssw0rd',
+          salt: 'somesalt',
+        })
+        .then(hash => console.log({ hash }));
+    }
     return (
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
         <Header style={{ padding: '6%', fontSize: '45pt' }}>
